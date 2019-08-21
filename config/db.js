@@ -8,7 +8,9 @@ const db = config.get("mongoURI");
 const connectDB = async () => {
   try {
     await mongoose.connect(db, {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      //DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead.
+      useCreateIndex: true
     });
     console.log("MongoDB Connected.");
   } catch (error) {
