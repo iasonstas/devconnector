@@ -1,5 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://jasta3:jasta3@devconnector-omutf.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret":"mysecrettoken"
-}
-
