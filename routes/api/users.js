@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
 const User = require("../../models/User");
 const gravatar = require("gravatar");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const { check, validationResult } = require("express-validator");
 
 //@route    POST api/users
 //@desc     Register User
@@ -34,7 +34,9 @@ router.post(
       let user = await User.findOne({ email: email });
       //See if the Users exists else send back an error
       if (user) {
-        res.status(400).json({ errors: [{ msg: "User already exists" }] });
+        return res
+          .status(400)
+          .json({ errors: [{ msg: "User already exists" }] });
       }
       //Get Users gravatar
       const gravatar = gravatar.url(email, {
