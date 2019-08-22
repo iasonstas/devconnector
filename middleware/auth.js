@@ -1,6 +1,8 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
-//Middleware is a function that has access to req res cycle(object) . Next is a callback that we have to run once we are done to move to the next piece of middleware
+
+//Middleware is a function that has access to req res cycle(object) .
+//Next is a callback that we have to run once we are done to move to the next piece of middleware
 
 module.exports = function(req, res, next) {
   //Get token from header
@@ -9,6 +11,7 @@ module.exports = function(req, res, next) {
   if (!token) {
     return res.status(401).json({ msg: "No token, authorization denied" });
   }
+
   //Verify token
   try {
     const decoded = jwt.verify(token, config.get("jwtSecret")); //decodes the token
